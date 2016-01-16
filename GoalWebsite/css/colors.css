@@ -1,0 +1,27 @@
+
+.priority {
+  background-color: #7486a3;
+}
+.goal {
+  background-color: #383f59;
+}
+.milestone {
+  background-color: #6e6763;
+}
+.update {
+  background-color: #d1cfd0;
+}
+.goal_list {
+  background-color: #333;
+}
+.milestone_list {
+  background-color: #333;
+}
+.update_list {
+  background-color: #333;
+}
+
+.checked {
+  background-color: #00cc00;
+}
+
