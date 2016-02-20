@@ -1,16 +1,19 @@
-
+.jumbotron {
+  background-color: #a9bda2;
+}
 .priority {
-  background-color: #7486a3;
+  background-color: #799484;
 }
 .goal {
-  background-color: #383f59;
+  background-color: #515e5e;
 }
 .milestone {
-  background-color: #6e6763;
+  background-color: #3d404d;
 }
 .update {
-  background-color: #d1cfd0;
+  background-color: #5c4a4d;
 }
+
 .goal_list {
   background-color: #333;
 }

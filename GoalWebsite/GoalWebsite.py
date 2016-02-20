@@ -56,7 +56,7 @@ class SaveAll(webapp2.RequestHandler):
         update = self.request.get('update')
         goalCheckbox = self.request.get('goalCheckbox')
         milestoneCheckbox = self.request.get('milestoneCheckbox')
-        logging.info(Stype+priorityTitle+goalTitle+milestoneTitle+"11111111111111111111111111")
+#         logging.info(Stype+priorityTitle+goalTitle+milestoneTitle+"11111111111111111111111111")
         if(priorityTitle != "" and Stype != "priority"):
             priorityObj = next((i for i in owner.priorities if i.title == priorityTitle), None)
             priorityIndex = owner.priorities.index(priorityObj)
@@ -82,7 +82,7 @@ class SaveAll(webapp2.RequestHandler):
             owner.priorities[priorityIndex].goals[goalIndex].completed = goalCheckbox == "true"
         elif(Stype == "milestone_checkbox"):
             owner.priorities[priorityIndex].goals[goalIndex].milestones[milestoneIndex].completed = milestoneCheckbox == "true"
-        logging.info(goalCheckbox + "------------------------------------------")       
+#         logging.info(goalCheckbox + "------------------------------------------")       
         owner.put()
         
 class DeleteAny(webapp2.RequestHandler):         
@@ -94,7 +94,7 @@ class DeleteAny(webapp2.RequestHandler):
                 break
         Stype = self.request.get('type')
         title = self.request.get('title')
-        logging.info(Stype + title) 
+#         logging.info(Stype + title) 
         for priority in owner.priorities:
             if(Stype == "priority" ):
                 if(priority.title == title):
@@ -156,9 +156,9 @@ class GetSavedOwner(webapp2.RequestHandler):
 #         self.response.out.write(simplejson.dumps([p.to_dict() for p in photos]))
         jsonObj = json.dumps({"owner":owner.to_dict()}) 
         
-        logging.info("hello") 
-        logging.info(jsonObj) 
-        print jsonObj
+#         logging.info("hello") 
+#         logging.info(jsonObj) 
+#         print jsonObj
         self.response.headers.add_header('content-type', 'application/json', charset='utf-8')
         self.response.out.write(jsonObj)
         
@@ -169,7 +169,17 @@ class GoalWebsite(webapp2.RequestHandler):
             self.redirect("/LoginPage")
             return
         template = JINJA_ENVIRONMENT.get_template('GoalWebsite.html')
-        self.response.write(template.render())
+        url = users.create_logout_url("/LoginPage")
+        template_values = {
+            'url': url,
+        }
+        self.response.write(template.render(template_values))
+        
+        
+class LogoutButton(webapp2.RequestHandler):         
+    def get(self): 
+#         self.response.write(users.create_logout_url("/LoginPage"))
+        self.redirect(users.create_logout_url("/LoginPage"))
         
         
 application = webapp2.WSGIApplication([
@@ -179,4 +189,6 @@ application = webapp2.WSGIApplication([
     ('/SaveOwner', SaveOwner),
     ('/GetSavedOwner', GetSavedOwner),
     ('/DeleteAny', DeleteAny),
+    ('/LogoutButton', LogoutButton),
+    
 ], debug=True)
