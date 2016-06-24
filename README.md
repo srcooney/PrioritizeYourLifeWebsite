@@ -12,9 +12,10 @@ you have satisfied your goal you can mark the goal as complete.
 
 ### How to use
 
-1. You will need to sign in with your gmail account to use this website.
-2. Type in the editable textbox and press the + button to add a new priority, goal, milestone and update (PGMU)
-3. Press the star button to open a new editable text to add a new (PGMU)
-4. Press the x button to delete (PGMU)
-5. Goals and milestones have a checkbox on the right for completing them, they will turn green when completed.
-6. That’s all have fun! 
+1. Go to this url: http://prioritizeyourlife2016.appspot.com/ 
+2. You will need to sign in with your gmail account to use this website
+3. Type in the editable textbox and press the + button to add a new priority, goal, milestone and update (PGMU)
+4. Press the star button to open a new editable text to add a new (PGMU)
+5. Press the x button to delete (PGMU)
+6. Goals and milestones have a checkbox on the right for completing them, they will turn green when completed.
+7. That’s all have fun! 
