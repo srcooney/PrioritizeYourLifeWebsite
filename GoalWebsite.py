@@ -54,16 +54,15 @@ class SaveAll(webapp2.RequestHandler):
         goalTitle = self.request.get('goal')
         milestoneTitle = self.request.get('milestone')
         update = self.request.get('update')
-        goalCheckbox = self.request.get('goalCheckbox')
-        milestoneCheckbox = self.request.get('milestoneCheckbox')
+        checkbox = self.request.get('checkbox')
 #         logging.info(Stype+priorityTitle+goalTitle+milestoneTitle+"11111111111111111111111111")
-        if(priorityTitle != "" and Stype != "priority"):
+        if(priorityTitle != "NA" and Stype != "priority"):
             priorityObj = next((i for i in owner.priorities if i.title == priorityTitle), None)
             priorityIndex = owner.priorities.index(priorityObj)
-        if(goalTitle != "" and Stype != "goal"):
+        if(goalTitle != "NA" and Stype != "goal"):
             goalObj = next((i for i in owner.priorities[priorityIndex].goals if i.title == goalTitle), None)
             goalIndex = owner.priorities[priorityIndex].goals.index(goalObj)
-        if(milestoneTitle != "" and Stype != "milestone"):
+        if(milestoneTitle != "NA" and Stype != "milestone"):
             milestoneObj = next((i for i in owner.priorities[priorityIndex].goals[goalIndex].milestones if i.title == milestoneTitle), None)
             milestoneIndex = owner.priorities[priorityIndex].goals[goalIndex].milestones.index(milestoneObj)
         
@@ -79,9 +78,9 @@ class SaveAll(webapp2.RequestHandler):
         elif(Stype == "update"):
             owner.priorities[priorityIndex].goals[goalIndex].milestones[milestoneIndex].updates.append(update)
         elif(Stype == "goal_checkbox"):
-            owner.priorities[priorityIndex].goals[goalIndex].completed = goalCheckbox == "true"
+            owner.priorities[priorityIndex].goals[goalIndex].completed = checkbox == "true"
         elif(Stype == "milestone_checkbox"):
-            owner.priorities[priorityIndex].goals[goalIndex].milestones[milestoneIndex].completed = milestoneCheckbox == "true"
+            owner.priorities[priorityIndex].goals[goalIndex].milestones[milestoneIndex].completed = checkbox == "true"
 #         logging.info(goalCheckbox + "------------------------------------------")       
         owner.put()
         
